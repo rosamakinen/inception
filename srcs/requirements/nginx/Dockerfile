@@ -9,6 +9,7 @@ RUN apk update && \
 
 # Expose port for HTTPS
 EXPOSE 8080
+#443
 
 # Create folders for certificates
 RUN mkdir -p /run/nginx /etc/nginx/ssl

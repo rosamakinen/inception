@@ -26,9 +26,9 @@ EXPOSE 9000
 # Create and copy paths and confs to cont
 RUN mkdir -p /run/php/ /var/www/html/wordpress/
 
-COPY conf/www.conf /etc/php81/php-fpm.d/www.conf
+COPY /www.conf /etc/php81/php-fpm.d/www.conf
 
-COPY ./tools/wp_setup.sh /
+COPY /wp_setup.sh /
 RUN chmod +x wp_setup.sh
 
 ENTRYPOINT ["sh", "/wp_setup.sh"]
