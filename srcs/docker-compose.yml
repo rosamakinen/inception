@@ -17,9 +17,9 @@ volumes:
       device: /home/rmakinen/data/wordpress-data
       o: bind
 
-# networks:
-#   mynetwork:
-#     name: rosanetwork
+networks:
+  mynetwork:
+    name: rosanetwork
 
 services:
   nginx:
@@ -32,8 +32,8 @@ services:
       - 443:443
     depends_on:
       - wordpress
-    # networks:
-    #   - mynetwork
+    networks:
+      - mynetwork
     restart: always
     volumes:
       - wordpress-data:/var/www/html
@@ -45,11 +45,11 @@ services:
     image: wordpress:rmakinen
     container_name: wordpress-cont
     env_file: .env
-    # networks:
-    #   - mynetwork
+    networks:
+      - mynetwork
     restart: always
-    # depends_on:
-    #   - mariadb
+    depends_on:
+      - mariadb
     volumes:
       - wordpress-data:/var/www/html
 
@@ -61,7 +61,7 @@ services:
     container_name: mariadb-cont
     env_file: .env
     restart: always
-    # networks:
-    #   - mynetwork
+    networks:
+      - mynetwork
     volumes:
       - mariadb-data:/var/lib/mysql
